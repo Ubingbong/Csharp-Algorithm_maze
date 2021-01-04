@@ -7,7 +7,7 @@ namespace Algorithm
         static void Main(string[] args)
         {
             Board board = new Board();
-            board.Initialize();
+            board.Initialize(25);
 
             // 콘솔의 커서를 보이지 않게 함
             Console.CursorVisible = false;
@@ -17,8 +17,6 @@ namespace Algorithm
 
             // WAIT_TICK 마다 화면을 갱신
             const int WAIT_TICK = 1000 / 30;
-            // ●
-            const char CIRCLE = '\u25cf';
 
             while (true)
             {
@@ -37,21 +35,10 @@ namespace Algorithm
 
                 #endregion
 
-                /* 렌더링 */
-
                 // 커서의 위치를 0, 0 으로 설정
                 Console.SetCursorPosition(0, 0);
+                board.Render();
 
-                // 25x25로 ●를 출력
-                for (int i = 0; i < 25; i++)
-                {
-                    for (int j = 0; j < 25; j++)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Write(CIRCLE);
-                    }
-                    Console.WriteLine();
-                }
             }
         }
     }
